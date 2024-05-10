@@ -2,9 +2,12 @@ class Enemy
 {
   float xPos,yPos;
   float xSpd,ySpd;
-  float size = 70;
+  float speed;
+  float size = 100;
   
   int type;
+  int maxHealth = 1;
+  int health = maxHealth;
   
   boolean active;
   
@@ -14,18 +17,19 @@ class Enemy
     yPos = y;
     
     type = t;
+    setTraits();
     
+    health = maxHealth;
     if(xPos > width || xPos < 0)
       active = true;
-      
     
     if(xPos > width / 2)
     {
-      xSpd = -5;
+      xSpd = -speed;
     }
     else
     {
-      xSpd = 5;
+      xSpd = speed;
     }
   }
   
@@ -39,8 +43,8 @@ class Enemy
     if(xPos > width + 250 || xPos < -250)
     {
       active = false;
-      
     }
+    
   }
   
   void moveEnemy()
@@ -48,5 +52,31 @@ class Enemy
     xPos += xSpd;
     yPos += ySpd;
     
+  }
+  
+  void setTraits()
+  {
+    switch(type)
+    {
+      case 0:
+        maxHealth = 1;
+        speed = 5;
+        return;
+      case 1:
+        maxHealth = 5;
+        speed = 2.5;
+        return;
+    }
+  }
+  
+  void takeDamage(int amount)
+  {
+    health -= amount;
+    if(health <= 0)
+    {
+      score+=maxHealth;
+      active = false;
+      return;
+    }
   }
 }
