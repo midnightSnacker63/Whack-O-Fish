@@ -4,12 +4,15 @@ class Enemy
   float xSpd,ySpd;
   float speed;
   float size = 100;
+  float spdMulti = 1;//multiplier for speed;
   
   int type;
   int maxHealth = 1;
   int health = maxHealth;
   
   boolean active;
+  boolean harmful;//if attacked you get hurt
+
   
   public Enemy(float x, float y, int t)
   {
@@ -31,15 +34,16 @@ class Enemy
     {
       xSpd = speed;
     }
+    
   }
   
   void drawEnemy()
   {
     if(xSpd > 0 && active)
-      image(enemyImageRight[type],xPos,yPos);
+      image(enemyImageRight[type],xPos,yPos,size,size);
     else if(xSpd < 0 && active)
-      image(enemyImageLeft[type],xPos,yPos);
-    
+      image(enemyImageLeft[type],xPos,yPos,size,size);
+      
     if(xPos > width + 250 || xPos < -250)
     {
       active = false;
@@ -49,8 +53,8 @@ class Enemy
   
   void moveEnemy()
   {
-    xPos += xSpd;
-    yPos += ySpd;
+    xPos += xSpd * spdMulti;
+    yPos += ySpd * spdMulti;
     
   }
   
@@ -61,20 +65,35 @@ class Enemy
       case 0:
         maxHealth = 1;
         speed = 5;
+
         return;
       case 1:
         maxHealth = 5;
         speed = 2.5;
         return;
+      case 2:
+        maxHealth = 1;
+        speed = 7;
+        harmful = true;
+        return;
+      case 3:
+        maxHealth = 25;
+        speed = 10;
+        size = 200;
+        return;
+      
+      
     }
   }
   
   void takeDamage(int amount)
   {
     health -= amount;
-    if(health <= 0)
+    spdMulti *= 0.85;
+    if(health <= 0 )
     {
-      score+=maxHealth;
+      if(!harmful)
+        score+=maxHealth;
       active = false;
       return;
     }
