@@ -39,13 +39,11 @@ class Items
     if(yPos > height+250)
     {
       active = false;
-      println("peef");
     }
     
     if(yPos < -150)
     {
       active = false;
-      println("poof");
     }
   }
   

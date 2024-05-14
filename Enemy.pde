@@ -44,7 +44,7 @@ class Enemy
     else if(xSpd < 0 && active)
       image(enemyImageLeft[type],xPos,yPos,size,size);
       
-    if(xPos > width + 250 || xPos < -250)
+    if(xPos > width + 450 || xPos < -450)
     {
       active = false;
     }
@@ -77,9 +77,9 @@ class Enemy
         harmful = true;
         return;
       case 3:
-        maxHealth = 25;
-        speed = 10;
-        size = 200;
+        maxHealth = 15;
+        speed = 7;
+        size = 150;
         return;
     }
   }

@@ -68,8 +68,8 @@ void handleEnemies()
   }
   if(millis() > enemyTimer)
   {
-    enemies.add(new Enemy(-150,random(height-50),int(random(0,3))));
-    enemies.add(new Enemy(width+150,random(height-50),int(random(0,3))));
+    enemies.add(new Enemy(-250,random(height-50),int(random(0,4))));
+    enemies.add(new Enemy(width+250,random(height-50),int(random(0,4))));
     enemyTimer = millis() + enemyCooldown;
     enemyCooldown = int(random(500,1500));
   }
@@ -135,9 +135,9 @@ void loadImages()
   enemyImageLeft[2].resize(100,0);
   enemyImageRight[2] = loadImage("pufferPlaceholderRight.png");
   enemyImageRight[2].resize(100,0);
-  enemyImageLeft[3] = loadImage("pufferPlaceholderLeft.png");
+  enemyImageLeft[3] = loadImage("cannonFishLeft.png");
   enemyImageLeft[3].resize(100,0);
-  enemyImageRight[3] = loadImage("pufferPlaceholderRight.png");
+  enemyImageRight[3] = loadImage("cannonFish.png");
   enemyImageRight[3].resize(100,0);
   
   itemImage[0] = loadImage("waterMineUp.png");

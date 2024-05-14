@@ -5,7 +5,7 @@ class Player
   int maxHealth;
   int health;
   
-  int damage = 10;
+  int damage = 1;
   public Player()
   {
     maxHealth = 10;
