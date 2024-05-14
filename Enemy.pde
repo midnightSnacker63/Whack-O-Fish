@@ -81,8 +81,6 @@ class Enemy
         speed = 10;
         size = 200;
         return;
-      
-      
     }
   }
   
@@ -94,6 +92,8 @@ class Enemy
     {
       if(!harmful)
         score+=maxHealth;
+      if(harmful)
+        score-=maxHealth;
       active = false;
       return;
     }

@@ -4,6 +4,8 @@ class Player
   
   int maxHealth;
   int health;
+  
+  int damage = 10;
   public Player()
   {
     maxHealth = 10;
@@ -22,7 +24,7 @@ class Player
     {
       if(dist(xPos,yPos,enemies.get(i).xPos,enemies.get(i).yPos) < enemies.get(i).size/2)
       {
-        enemies.get(i).takeDamage(1);
+        enemies.get(i).takeDamage(damage);
         if(enemies.get(i).harmful)
         {
           health --;

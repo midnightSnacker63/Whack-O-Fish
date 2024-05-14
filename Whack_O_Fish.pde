@@ -41,7 +41,7 @@ void draw()
 
 void mousePressed()
 {  
-  if(mouseButton == LEFT)
+  if(mouseButton == LEFT && p.health > 0)
   {
     p.attack();
     for(int i = 0; i < items.size(); i++)
@@ -49,7 +49,7 @@ void mousePressed()
       items.get(i).obtainItem();
     }
   }
-  
+  //items.add(new Items(random(50,width-50),0,int(random(0,2))));
 }
 
 void handleEnemies()
@@ -68,8 +68,10 @@ void handleEnemies()
   }
   if(millis() > enemyTimer)
   {
-    enemies.add(new Enemy(random(-150,width+150),random(height-50),int(random(0,3))));
+    enemies.add(new Enemy(-150,random(height-50),int(random(0,3))));
+    enemies.add(new Enemy(width+150,random(height-50),int(random(0,3))));
     enemyTimer = millis() + enemyCooldown;
+    enemyCooldown = int(random(500,1500));
   }
 }
 
@@ -113,7 +115,7 @@ void handleItems()
   }
   if(millis() > itemTimer)
   {
-    items.add(new Items(random(50,width-50),height+150,0));
+    items.add(new Items(random(50,width-50),0,int(random(0,2))));
     itemTimer = millis() + itemCooldown;
     itemCooldown = int(random(3000,20000));
   }
@@ -140,6 +142,8 @@ void loadImages()
   
   itemImage[0] = loadImage("waterMineUp.png");
   itemImage[0].resize(100,0);
+  itemImage[1] = loadImage("healthPack.png");
+  itemImage[1].resize(100,0);
   
   whackEffect = loadImage("explosion.png");
 }

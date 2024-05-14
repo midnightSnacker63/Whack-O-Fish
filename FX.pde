@@ -27,7 +27,7 @@ class FX
       translate(xPos,yPos);
       rotate(angle);
       angle+= 0.25;
-      image(whackEffect,0,0,100,100);
+      image(whackEffect,0,0,70,70);
       pop();
     }
   }
