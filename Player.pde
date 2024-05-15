@@ -6,6 +6,11 @@ class Player
   int health;
   
   int damage = 1;
+  
+  int attackTimer;
+  int attackCooldown = 300;
+  
+  boolean attacking;
   public Player()
   {
     maxHealth = 10;

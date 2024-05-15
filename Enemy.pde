@@ -72,14 +72,20 @@ class Enemy
         speed = 2.5;
         return;
       case 2:
-        maxHealth = 1;
+        maxHealth = 3;
         speed = 7;
         harmful = true;
         return;
       case 3:
-        maxHealth = 15;
-        speed = 7;
+        maxHealth = 20;
+        speed = 5;
         size = 150;
+        return;
+      case 4:
+        maxHealth = 1;
+        speed = 12;
+        size = 75;
+        harmful = true;
         return;
     }
   }

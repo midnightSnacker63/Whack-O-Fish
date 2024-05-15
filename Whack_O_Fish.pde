@@ -44,12 +44,19 @@ void mousePressed()
   if(mouseButton == LEFT && p.health > 0)
   {
     p.attack();
+    p.attackTimer = millis()+p.attackCooldown;
+    p.attacking = true;
     for(int i = 0; i < items.size(); i++)
     {
       items.get(i).obtainItem();
     }
   }
   //items.add(new Items(random(50,width-50),0,int(random(0,2))));
+}
+
+void mouseReleased()
+{
+  p.attacking = false;
 }
 
 void handleEnemies()
@@ -68,10 +75,10 @@ void handleEnemies()
   }
   if(millis() > enemyTimer)
   {
-    enemies.add(new Enemy(-250,random(height-50),int(random(0,4))));
-    enemies.add(new Enemy(width+250,random(height-50),int(random(0,4))));
+    enemies.add(new Enemy(-250,random(height-50),int(random(0,5))));
+    enemies.add(new Enemy(width+250,random(height-50),int(random(0,5))));
     enemyTimer = millis() + enemyCooldown;
-    enemyCooldown = int(random(500,1500));
+    enemyCooldown = int(random(750,1750));
   }
 }
 
@@ -81,6 +88,11 @@ void handlePlayer()
   if(p.health <= 0)
   {
     enemies.clear();
+  }
+  if(p.attacking && millis() > p.attackTimer)
+  {
+    p.attack();
+    p.attackTimer = millis()+p.attackCooldown;
   }
 }
 
@@ -131,14 +143,18 @@ void loadImages()
   enemyImageLeft[1].resize(100,0);
   enemyImageRight[1] = loadImage("blobFishRight.png");
   enemyImageRight[1].resize(100,0);
-  enemyImageLeft[2] = loadImage("pufferPlaceholderLeft.png");
+  enemyImageLeft[2] = loadImage("pufferLeft.png");
   enemyImageLeft[2].resize(100,0);
-  enemyImageRight[2] = loadImage("pufferPlaceholderRight.png");
+  enemyImageRight[2] = loadImage("pufferRight.png");
   enemyImageRight[2].resize(100,0);
   enemyImageLeft[3] = loadImage("cannonFishLeft.png");
   enemyImageLeft[3].resize(100,0);
   enemyImageRight[3] = loadImage("cannonFish.png");
   enemyImageRight[3].resize(100,0);
+  enemyImageLeft[4] = loadImage("piranhaLeft.png");
+  enemyImageLeft[4].resize(100,0);
+  enemyImageRight[4] = loadImage("piranhaRight.png");
+  enemyImageRight[4].resize(100,0);
   
   itemImage[0] = loadImage("waterMineUp.png");
   itemImage[0].resize(100,0);
