@@ -17,6 +17,7 @@ PImage [] enemyImageRight = new PImage[10];
 PImage [] itemImage = new PImage[10];
 
 PImage whackEffect;
+PImage background;
 
 Player p;
 
@@ -31,7 +32,9 @@ void setup()
 }
 void draw()
 {
-  background(0,0,255);
+  imageMode(CORNER);
+  image(background,0,0);
+  imageMode(CENTER);
   handleEnemies();
   handlePlayer();
   handleFX();
@@ -162,10 +165,13 @@ void loadImages()
   itemImage[1].resize(100,0);
   
   whackEffect = loadImage("explosion.png");
+  
+  background = loadImage("coralReef.png");
 }
 
 void drawHUD()
 {
+  
   text("score: "+ score,30,50);
   push();//health bar
   rectMode(CORNER);
