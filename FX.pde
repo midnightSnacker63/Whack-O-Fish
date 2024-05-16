@@ -4,7 +4,7 @@ class FX
   float xPos, yPos;
   float angle = 12;
   
-  int lifeSpan = millis()+250;
+  int lifeSpan = millis()+350;
   int type;
   
   boolean active = true;
