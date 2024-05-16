@@ -33,9 +33,18 @@ class Player
         if(enemies.get(i).harmful)
         {
           health --;
+          fx.add(new FX(mouseX,mouseY,1));
+          if(health < 0)
+          {
+            health = 0;
+          }
+        }
+        else
+        {
+          fx.add(new FX(mouseX,mouseY,0));
         }
       }
     }
-    fx.add(new FX(mouseX,mouseY,0));
+    circle(xPos,yPos,50);
   }
 }

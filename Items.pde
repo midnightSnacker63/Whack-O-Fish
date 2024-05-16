@@ -55,6 +55,10 @@ class Items
         p.health --;
       if(healing && p.health < p.maxHealth)
         p.health ++;
+      if(harmful)
+      {
+        fx.add(new FX(mouseX,mouseY,0));
+      }
       active = false;
     }
   }

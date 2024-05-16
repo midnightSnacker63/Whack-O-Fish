@@ -7,7 +7,7 @@ ArrayList<Items> items = new ArrayList<Items>();
 
 int score;
 int enemyTimer;
-int enemyCooldown = 100;
+int enemyCooldown = 9;
 int itemTimer = 3000;
 int itemCooldown = 5000;
 
@@ -76,7 +76,7 @@ void handleEnemies()
       enemies.remove(i);
     }
   }
-  if(millis() > enemyTimer)
+  if(millis() > enemyTimer && p.health > 0)
   {
     enemies.add(new Enemy(-250,random(height-50),int(random(0,5))));
     enemies.add(new Enemy(width+250,random(height-50),int(random(0,5))));
@@ -90,7 +90,7 @@ void handlePlayer()
   p.movePlayer();
   if(p.health <= 0)
   {
-    enemies.clear();
+    //enemies.clear();
   }
   if(p.attacking && millis() > p.attackTimer)
   {
@@ -128,7 +128,7 @@ void handleItems()
       items.remove(i);
     }
   }
-  if(millis() > itemTimer)
+  if(millis() > itemTimer && p.health > 0)
   {
     items.add(new Items(random(50,width-50),0,int(random(0,2))));
     itemTimer = millis() + itemCooldown;

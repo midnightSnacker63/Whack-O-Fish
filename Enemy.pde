@@ -56,6 +56,11 @@ class Enemy
     xPos += xSpd * spdMulti;
     yPos += ySpd * spdMulti;
     
+    if(p.health <= 0)
+    {
+      spdMulti = 5;
+    }
+    
   }
   
   void setTraits()
@@ -101,6 +106,7 @@ class Enemy
       if(harmful)
         score-=maxHealth;
       active = false;
+      
       return;
     }
   }

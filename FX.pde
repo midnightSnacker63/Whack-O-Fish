@@ -2,9 +2,10 @@
 class FX
 {
   float xPos, yPos;
-  float angle;
+  float angle = 12;
   
-  int lifeSpan = millis()+200;
+  int lifeSpan = millis()+250;
+  int type;
   
   boolean active = true;
   public FX(float x, float y, int t)
@@ -12,7 +13,9 @@ class FX
     xPos = x;
     yPos = y;
     
-    angle = random(0,360);
+    type = t;
+    
+    angle = random(-1,1);
   }
   
   void drawFx()
@@ -21,13 +24,23 @@ class FX
     {
       active = false;
     }
-    if(active)
+    if(active && type == 0)
     {
       push();
       translate(xPos,yPos);
       rotate(angle);
       angle+= 0.25;
-      image(whackEffect,0,0,70,70);
+      image(whackEffect,0,0,100,100);
+      pop();
+    }
+    if(type == 1)
+    {
+      push();
+      translate(xPos,yPos);
+      rotate(angle);
+      textAlign(CENTER);
+      textSize(35);
+      text("YEOWCH!!!",0,0);
       pop();
     }
   }
