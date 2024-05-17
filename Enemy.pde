@@ -23,10 +23,10 @@ class Enemy
     setTraits();
     
     health = maxHealth;
-    if(xPos > width || xPos < 0)
+    if(xPos > width || xPos < 0)//only spawn if it starts off screen
       active = true;
     
-    if(xPos > width / 2)
+    if(xPos > width / 2)//determines the direction they go based on where they spawn
     {
       xSpd = -speed;
     }
@@ -56,7 +56,7 @@ class Enemy
     xPos += xSpd * spdMulti;
     yPos += ySpd * spdMulti;
     
-    if(p.health <= 0)
+    if(p.health <= 0)//when you die then they scatter
     {
       spdMulti = 5;
     }
@@ -67,26 +67,26 @@ class Enemy
   {
     switch(type)
     {
-      case 0:
+      case 0://small fry
         maxHealth = 1;
         speed = 5;
 
         return;
-      case 1:
+      case 1://blob fish
         maxHealth = 5;
         speed = 2.5;
         return;
-      case 2:
+      case 2://puffer
         maxHealth = 3;
         speed = 7;
         harmful = true;
         return;
-      case 3:
-        maxHealth = 20;
+      case 3://big fish
+        maxHealth = 15;
         speed = 5;
         size = 150;
         return;
-      case 4:
+      case 4://piranha
         maxHealth = 1;
         speed = 12;
         size = 75;
@@ -101,9 +101,9 @@ class Enemy
     spdMulti *= 0.85;
     if(health <= 0 )
     {
-      if(!harmful)
+      if(!harmful)//add score if non harmful
         score+=maxHealth;
-      if(harmful)
+      if(harmful)//remove score if harmful
         score-=maxHealth;
       active = false;
       

@@ -150,9 +150,9 @@ void loadImages()
   enemyImageLeft[2].resize(100,0);
   enemyImageRight[2] = loadImage("pufferRight.png");
   enemyImageRight[2].resize(100,0);
-  enemyImageLeft[3] = loadImage("cannonFishLeft.png");
+  enemyImageLeft[3] = loadImage("bigFishLeft.png");
   enemyImageLeft[3].resize(100,0);
-  enemyImageRight[3] = loadImage("cannonFish.png");
+  enemyImageRight[3] = loadImage("bigFish.png");
   enemyImageRight[3].resize(100,0);
   enemyImageLeft[4] = loadImage("piranhaLeft.png");
   enemyImageLeft[4].resize(100,0);
